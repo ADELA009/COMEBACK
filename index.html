@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Adeyekun Faith's portfolio showcasing web development projects and skills.">
+        <meta name="keywords" content="Adeyekun Faith, web developer, portfolio, HTML, CSS, JavaScript">
+        <title>Portfolio</title>
+
     <style>
 body {
     font-family: Arial, sans-serif;
@@ -274,12 +279,13 @@ footer ul li a:hover {
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="^\d{11}$" title="Please enter an 11-digit phone number">
+
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
 
             <button type="submit" id="send-btn">Send</button>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone">
         </form>
     </section>
 
@@ -415,6 +421,7 @@ contactForm.addEventListener('submit', event => {
     event.preventDefault();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
     if (!name || !email || !message) {
@@ -424,6 +431,11 @@ contactForm.addEventListener('submit', event => {
 
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
         alert('Please enter a valid email address.');
+        return;
+    }
+
+    if (!/^\d{11}$/.test(phone)) {
+        alert('Please enter a valid 11-digit phone number.');
         return;
     }
 
